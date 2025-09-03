@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 #function based views
 # class based views
 
-from django.views.generic import ListView,DetailView, CreateView, UpdateView
+from django.views.generic import ListView,DetailView, CreateView, UpdateView, View
 from django.urls import reverse
 
 class PostListView(ListView):
@@ -80,12 +80,21 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
 
 from django.utils import timezone
 
-@login_required
-def draft_publish(request, pk):
-    post = Post.objects.get(pk=pk, published_at__isnull=True)
-    post.published_at = timezone.now()
-    post.save()
-    return redirect("post-list")
+class DraftPublishView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        post = Post.objects.get(pk=pk, published_at__isnull=True)
+        post.published_at= timezone.now()
+        post.save()
+        return redirect("post-list")
+
+class PostDeleteView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        post = Post.objects.get(pk=pk)
+        post.delete()
+        if post.published_at:
+            return redirect("post-list")
+        else: 
+            return redirect("draft-list")
 
 @login_required
 def post_delete(request, pk):
