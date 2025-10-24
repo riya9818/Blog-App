@@ -4,6 +4,9 @@ from blog_app.forms import PostForm
 from blog_app.models import Post
 from django.contrib.auth.decorators import login_required
 
+from django.contrib.auth import login
+from django.contrib import messages
+
 #function based views
 # class based views
 
