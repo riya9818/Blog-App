@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth import login
 from django.contrib import messages
-
+from blog_app.forms import SignupForm
 #function based views
 # class based views
 
