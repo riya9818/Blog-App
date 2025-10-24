@@ -104,3 +104,16 @@ def post_delete(request, pk):
         return redirect("post-list")
     else:
         return redirect("draft-list")
+
+
+def signup_view(request):
+    if request.method == "POST":
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)  # auto login after signup
+            messages.success(request, "Account created successfully!")
+            return redirect("post-list")
+    else:
+        form = SignupForm()
+    return render(request, "signup.html", {"form": form})
