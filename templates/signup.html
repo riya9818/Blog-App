@@ -2,19 +2,16 @@
 {% load static %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container mt-4">
   <div class="row justify-content-center">
-    <div class="col-md-6">
-      <h2 class="text-center mb-4" style="font-weight: 600;">Sign Up</h2>
+    <div class="col-md-5">
+      <h3 class="text-center mb-3" style="font-weight: 600;">Sign Up</h3>
 
       <form method="post" class="needs-validation" novalidate>
         {% csrf_token %}
-        
         {% for field in form %}
-          <div class="mb-3">
-            <label for="{{ field.id_for_label }}" class="form-label" style="font-weight: 500;">
-              {{ field.label }}
-            </label>
+          <div class="mb-2">
+            <label for="{{ field.id_for_label }}" class="form-label mb-1">{{ field.label }}</label>
             {{ field }}
             {% if field.help_text %}
               <div class="form-text text-muted small">{{ field.help_text }}</div>
@@ -25,14 +22,46 @@
           </div>
         {% endfor %}
 
-        <button type="submit" class="btn btn-dark w-100">Sign Up</button>
+        <button type="submit" class="btn btn-primary w-100 mt-2">Sign Up</button>
       </form>
 
       <p class="text-center mt-3 mb-0">
         Already have an account? 
-        <a href="{% url 'login' %}" class="text-decoration-none">Login here</a>
+        <a href="{% url 'login' %}" class="text-decoration-none text-primary">Login here</a>
       </p>
     </div>
   </div>
 </div>
+
+<style>
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #fff;
+    color: #222;
+  }
+
+  input, select, textarea {
+    font-family: inherit;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 6px 10px;
+    width: 100%;
+    font-size: 0.95rem;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: none;
+  }
+
+  .btn-primary {
+    background-color: #0d6efd;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background-color: #0b5ed7;
+  }
+</style>
 {% endblock %}
