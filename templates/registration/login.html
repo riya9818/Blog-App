@@ -1,27 +1,76 @@
-
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <h3 class="text-center mb-3" style="font-weight: 600;">Login</h3>
 
-    {% if form.errors and form.non_field_errors %}
-        {{form.non_field_errors}}
-    {% endif %}
+      {% if form.errors or form.non_field_errors %}
+        <div class="alert alert-danger py-2 small">
+          {{ form.non_field_errors }}
+        </div>
+      {% endif %}
 
-    <form action="" method="post">
+      <form action="" method="post" class="needs-validation" novalidate>
         {% csrf_token %}
-        <label for="username" class="form-label">Username</label>
-        {{form.username.errors}}
-        
-        <input type="text" name="username" class="form-control" id="username" />
 
-        <label for="password" class="form-label">Password</label>
-         {{form.password.errors}}
-        
-        <input type="password" name="password" class="form-control" id="password" />
+        <div class="mb-2">
+          <label for="username" class="form-label mb-1">Username</label>
+          {{ form.username.errors }}
+          <input type="text" name="username" class="form-control" id="username" required>
+        </div>
 
-         <button type="submit" class="btn btn-primary">Login</button>
+        <div class="mb-3">
+          <label for="password" class="form-label mb-1">Password</label>
+          {{ form.password.errors }}
+          <input type="password" name="password" class="form-control" id="password" required>
+        </div>
 
-    </form>
+        <button type="submit" class="btn btn-primary w-100 mt-2">Login</button>
+      </form>
 
-    <p>Don't have an account? <a href="{% url 'signup' %}">Sign up here</a></p>
-{% endblock content %}
+      <p class="text-center mt-3 mb-0">
+        Don’t have an account?
+        <a href="{% url 'signup' %}" class="text-decoration-none text-primary">Sign up here</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #fff;
+    color: #222;
+  }
+
+  input {
+    font-family: inherit;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 0.95rem;
+  }
+
+  input:focus {
+    outline: none;
+    border-color: #0d6efd;
+    box-shadow: none;
+  }
+
+  .btn-primary {
+    background-color: #0d6efd;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background-color: #0b5ed7;
+  }
+
+  .alert {
+    font-size: 0.9rem;
+  }
+</style>
+{% endblock %}
