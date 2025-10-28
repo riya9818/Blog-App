@@ -4,26 +4,28 @@
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10">
-            <article class="p-4 shadow-sm bg-light rounded-3">
+            
+            <article class="p-5 shadow-lg bg-white rounded-4 border border-1">
                 <header class="mb-4 text-center">
-                    <h1 class="fw-bold fst-italic">{{ post.title }}</h1>
-                    <p class="text-muted mb-1">by @{{ post.author.username }}</p>
+                    <h1 class="fw-bold text-primary fst-italic">{{ post.title }}</h1>
+                    <p class="text-secondary small">by @{{ post.author.username }}</p>
                 </header>
 
-                <section class="post-body mb-4">
-                    <p class="fs-5" style="white-space: pre-line;">
+                <section class="post-body mb-4 lh-lg">
+                    <p class="fs-6" style="white-space: pre-line;">
                         {{ post.content }}
                     </p>
                 </section>
 
                 {% if request.user.is_authenticated %}
-                <div class="d-flex gap-2 justify-content-center mt-4">
-                    <a href="{% url 'draft-publish' post.pk %}" class="btn btn-success px-4">Publish</a>
-                    <a href="{% url 'post-update' post.pk %}" class="btn btn-primary px-4">Edit</a>
-                    <a href="{% url 'post-delete' post.pk %}" class="btn btn-danger px-4">Delete</a>
+                <div class="d-flex gap-3 justify-content-center mt-4">
+                    <a href="{% url 'draft-publish' post.pk %}" class="btn btn-success rounded-pill px-4">Publish</a>
+                    <a href="{% url 'post-update' post.pk %}" class="btn btn-outline-primary rounded-pill px-4">Edit</a>
+                    <a href="{% url 'post-delete' post.pk %}" class="btn btn-outline-danger rounded-pill px-4">Delete</a>
                 </div>
                 {% endif %}
             </article>
+
         </div>
     </div>
 </div>
