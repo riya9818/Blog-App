@@ -25,3 +25,36 @@ Frontend: HTML, CSS, Django Templates
 Database: SQLite (default for development)
 
 Other Tools: Django’s generic class-based views, LoginRequiredMixin for access control
+
+## Setup Instructions
+
+Clone the repository:
+
+git clone https://github.com/yourusername/blog-app.git
+cd blog-app
+
+
+Create and activate a virtual environment:
+
+python -m venv venv
+source venv/bin/activate   # On Windows: venv\Scripts\activate
+
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+
+Apply migrations:
+
+python manage.py migrate
+
+
+Run the development server:
+
+python manage.py runserver
+
+
+Access the app in your browser:
+
+http://127.0.0.1:8000/
