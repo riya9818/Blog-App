@@ -7,7 +7,7 @@
             <div class="card shadow-sm border-0 p-4">
                 <h2 class="text-center mb-4 fw-bold">Create New Post</h2>
 
-                <form action="" method="post" class="post-form">
+                <form action="" method="post" enctype="multipart/form-data" class="post-form">
                     {% csrf_token %}
                     {% for field in form %}
                         <div class="mb-3">
