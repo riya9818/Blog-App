@@ -10,6 +10,15 @@
                     <h1 class="fw-bold text-primary fst-italic">{{ post.title }}</h1>
                     <p class="text-secondary small">by @{{ post.author.username }}</p>
                 </header>
+                
+                {% if post.image %}
+                <div class="text-center mb-4">
+                    <img src="{{ post.image.url }}" alt="Post Image" 
+                        class="img-fluid rounded-3 shadow-sm" 
+                        style="max-height: 350px; object-fit: cover;">
+                </div>
+                {% endif %}
+
 
                 <section class="post-body mb-4 lh-lg">
                     <p class="fs-6" style="white-space: pre-line;">
