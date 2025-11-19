@@ -15,14 +15,21 @@ from django.urls import reverse
 
 class PostListView(ListView):
     model = Post
-    template_name="post_list.html"
-    context_object_name="posts"
+    template_name = "post_list.html"
+    context_object_name = "posts"
 
     def get_queryset(self):
-         posts = Post.objects.filter(published_at__isnull=False).order_by(
-              "-published_at"
-         )
-         return posts
+        posts = Post.objects.filter(published_at__isnull=False).order_by("-published_at")
+
+        query = self.request.GET.get("q")
+
+        if query:
+            posts = posts.filter(
+                Q(title__icontains=query) |
+                Q(content__icontains=query)
+            )
+
+        return posts
 
 # Create your views here.
 class PostDetailView(DetailView):
