@@ -5,6 +5,13 @@
 <div class="mt-4">
   <h2 class="text-center mb-4" style="font-weight:600;">Latest Posts</h2>
 
+  {% if request.GET.q %}
+  <p class="text-center text-muted">
+      Showing results for: <strong>{{ request.GET.q }}</strong>
+  </p>
+  {% endif %}
+
+
   {% if posts %}
     <div class="list-group">
       {% for post in posts %}
