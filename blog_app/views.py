@@ -12,6 +12,7 @@ from blog_app.forms import SignupForm
 
 from django.views.generic import ListView,DetailView, CreateView, UpdateView, View
 from django.urls import reverse
+from django.db.models import Q
 
 class PostListView(ListView):
     model = Post
