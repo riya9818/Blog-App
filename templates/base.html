@@ -28,7 +28,15 @@
 
               <!-- SEARCH BAR -->
               <form method="get" action="{% url 'post-list' %}" class="d-inline-block ms-2">
-
+                <input 
+                  type="text" 
+                  name="q" 
+                  class="form-control form-control-sm"
+                  placeholder="Search..."
+                  style="width: 150px; display: inline-block;"
+                  value="{{ request.GET.q }}"
+                >
+              </form>
 
               <form action="{% url 'logout' %}" method="post" class="d-inline">
                 {% csrf_token %}
