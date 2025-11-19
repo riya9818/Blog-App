@@ -11,6 +11,12 @@
   </p>
   {% endif %}
 
+  {% if not posts %}
+  <div class="alert alert-warning text-center mt-4">
+      No posts found.
+  </div>
+  {% endif %}
+
 
   {% if posts %}
     <div class="list-group">
