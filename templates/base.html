@@ -26,6 +26,10 @@
                 <span class="material-symbols-outlined lg-icons">edit</span>
               </a>
 
+              <!-- SEARCH BAR -->
+              <form method="get" action="{% url 'post-list' %}" class="d-inline-block ms-2">
+
+
               <form action="{% url 'logout' %}" method="post" class="d-inline">
                 {% csrf_token %}
                 <button type="submit" class="btn text-white" aria-label="Logout">
