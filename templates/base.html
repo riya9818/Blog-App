@@ -36,6 +36,10 @@
                   style="width: 150px; display: inline-block;"
                   value="{{ request.GET.q }}"
                 >
+
+                <input type="text" name="author" placeholder="Author"
+                        class="form-control form-control-sm d-inline-block ms-1"
+                        style="width:120px;" value="{{ request.GET.author }}">
               </form>
 
               <form action="{% url 'logout' %}" method="post" class="d-inline">
