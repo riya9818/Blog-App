@@ -23,6 +23,8 @@ class PostListView(ListView):
         posts = Post.objects.filter(published_at__isnull=False).order_by("-published_at")
 
         query = self.request.GET.get("q")
+        author = self.request.GET.get("author")
+        date_from = self.request.GET.get("date_from")
 
         if query:
             posts = posts.filter(
