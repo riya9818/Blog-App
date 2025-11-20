@@ -35,6 +35,11 @@ class PostListView(ListView):
         if author:
             posts = posts.filter(author__username__icontains=author)
 
+        if date_from:
+            posts = posts.filter(published_at__date__gte=date_from)
+
+        if date_to:
+            posts = posts.filter(published_at__date__lte=date_to)
         return posts
 
 # Create your views here.
