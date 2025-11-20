@@ -32,6 +32,8 @@ class PostListView(ListView):
                 Q(title__icontains=query) |
                 Q(content__icontains=query)
             )
+        if author:
+            posts = posts.filter(author__username__icontains=author)
 
         return posts
 
