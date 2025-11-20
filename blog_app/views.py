@@ -25,6 +25,7 @@ class PostListView(ListView):
         query = self.request.GET.get("q")
         author = self.request.GET.get("author")
         date_from = self.request.GET.get("date_from")
+        date_to = self.request.GET.get("date_to")
 
         if query:
             posts = posts.filter(
