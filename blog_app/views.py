@@ -40,6 +40,10 @@ class PostListView(ListView):
 
         if date_to:
             posts = posts.filter(published_at__date__lte=date_to)
+
+        if date_from and date_to and date_from > date_to:
+             date_from, date_to = date_to, date_from
+
         return posts
 
 # Create your views here.
