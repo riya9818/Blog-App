@@ -41,9 +41,14 @@
                         class="form-control form-control-sm d-inline-block ms-1"
                         style="width:120px;" value="{{ request.GET.author }}">
 
-                 <input type="date" name="date_from"
+                <input type="date" name="date_from"
                         class="form-control form-control-sm d-inline-block ms-1"
                         style="width:150px;" value="{{ request.GET.date_from }}">
+
+                <input type="date" name="date_to"
+                        class="form-control form-control-sm d-inline-block ms-1"
+                        style="width:150px;" value="{{ request.GET.date_to }}">
+             
               </form>
 
               <form action="{% url 'logout' %}" method="post" class="d-inline">
