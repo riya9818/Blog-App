@@ -83,3 +83,11 @@ h4 {
   font-family: inherit;
   font-size: inherit;
 }
+.top-menu form input {
+    border-radius: 20px;
+}
+
+.top-menu form input:focus {
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.6);
+}
