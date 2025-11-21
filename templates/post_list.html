@@ -17,6 +17,18 @@
   </div>
   {% endif %}
 
+  {% if request.GET %}
+      <p class="text-center text-secondary">
+          Showing {{ posts|length }} results
+      </p>
+
+      <div class="text-center mb-3">
+          <a href="{% url 'post-list' %}" class="btn btn-sm btn-outline-secondary">
+              Clear Filters
+          </a>
+      </div>
+  {% endif %}
+
 
   {% if posts %}
     <div class="list-group">
